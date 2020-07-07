@@ -1,8 +1,9 @@
 package br.com.solid.tdd.exercicio2;
 
-public class EnviadorDeEmail {
+public class EnviadorDeEmail implements AcaoAposGerarNota{
 
-    public void enviaEmail(NotaFiscal nf) {
-        System.out.println("envia email da nf " + nf.getId());
+    @Override
+    public void executa(NotaFiscal nf) {
+
     }
 }
