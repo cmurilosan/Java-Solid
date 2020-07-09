@@ -1,6 +1,7 @@
 package br.com.solid.tdd.exercicio4;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Fatura {
@@ -26,15 +27,28 @@ public class Fatura {
     }
 
     public List<Pagamento> getPagamentos() {
-        return pagamentos;
+
+        return Collections.unmodifiableList(pagamentos);
     }
 
     public boolean isPago() {
         return pago;
     }
 
-    public void setPago(boolean pago) {
-        this.pago = pago;
+    public void adicionaPagamento(Pagamento pagamento) {
+        this.pagamentos.add(pagamento);
+        if (valorTotalDosPagamentos()> this.valor) {
+            this.pago = true;
+        }
+    }
+
+    private double valorTotalDosPagamentos() {
+        double total = 0;
+
+        for(Pagamento p : pagamentos) {
+            total += p.getValor();
+        }
+        return total;
     }
 
 }
