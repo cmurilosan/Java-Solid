@@ -10,16 +10,28 @@ public class ProcessadorDeInvestimentos {
         for (ContaComum conta : contasDoBanco()) {
             conta.rende();
 
-            System.out.println("Novo Saldo:");
+            System.out.println("Conta Comum - Novo Saldo:");
             System.out.println(conta.getSaldo());
+        }
+
+        for (ContaDeEstudante conta : contasDeEstudante()) {
+            conta.getMilhas();
+
+
+            System.out.println("Conta Estudante - Novo Saldo:");
+            System.out.println(conta.getMilhas());
         }
     }
 
-    private static List<ContaComum> contasDoBanco() {
-        return Arrays.asList(umaContaCom(100), umaContaCom(150), contaDeEstudanteCom(200));
+    private static List<ContaDeEstudante> contasDeEstudante() {
+        return Arrays.asList(contaDeEstudanteCom(100),contaDeEstudanteCom(150));
     }
 
-    private static ContaComum contaDeEstudanteCom(double amount) {
+    private static List<ContaComum> contasDoBanco() {
+        return Arrays.asList(umaContaCom(100), umaContaCom(150));
+    }
+
+    private static ContaDeEstudante contaDeEstudanteCom(double amount) {
         ContaDeEstudante c = new ContaDeEstudante();
         c.deposita(amount);
         return c;
@@ -30,4 +42,5 @@ public class ProcessadorDeInvestimentos {
         c.deposita(valor);
         return c;
     }
+
 }
